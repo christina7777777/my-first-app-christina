@@ -1,0 +1,13 @@
+
+
+# this is the "requirements.txt" file...
+
+
+requests
+
+plotly
+
+# ImportError: Plotly express requires pandas to be installed.
+pandas
+
+sendgrid==6.5.0

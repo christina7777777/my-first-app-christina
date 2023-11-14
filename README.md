@@ -20,6 +20,21 @@ Install packages:
 pip install -r requirements.txt
 ```
 
+
+Obtain an [API Key from Alphavantage](https://www.alphavantage.co/support/#api-key) or from the prof (`ALPHAVANTAGE_API_KEY`).
+
+You must first follow the [setup instructions](https://github.com/prof-rossetti/intro-to-python/blob/main/notes/python/packages/sendgrid.md) to create an account, verify your account, setup a single sender, and obtain an API Key.
+
+Create a ".env" file and paste in the following contents:
+
+```sh
+# this is the ".env" file...
+
+ALPHAVANTAGE_API_KEY="_________"
+SENDGRID_API_KEY="_________"
+SENDER_ADDRESS="example.gmail.com"
+```
+
 ## Usage
 
 Run the example script:
@@ -34,12 +49,9 @@ Run the unemployment report:
 python app/unemployment.py
 ```
 
-Obtain an [API Key from Alphavantage](https://www.alphavantage.co/support/#api-key) or from the prof (`ALPHAVANTAGE_API_KEY`).
+Send an example email:
 
-Create a ".env" file and paste in the following contents:
 
 ```sh
-# this is the ".env" file...
-
-ALPHAVANTAGE_API_KEY="_________"
+python app/email_service.py
 ```
