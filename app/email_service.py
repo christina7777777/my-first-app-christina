@@ -61,4 +61,5 @@ my_content = """
         <li>Strawberry</li>
     </ul>
 """
+
 send_email(html_content=my_content, recipient_address=user_address)
