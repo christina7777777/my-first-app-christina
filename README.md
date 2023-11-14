@@ -55,3 +55,11 @@ Send an example email:
 ```sh
 python app/email_service.py
 ```
+
+Run the unemployment report:
+
+```sh
+#python app/unemployment.py
+
+python -m app.unemployment
+```
