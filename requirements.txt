@@ -16,6 +16,8 @@ python-dotenv
 
 pgeocode
 
+ipython
+
 #TEST
 
 pytest
