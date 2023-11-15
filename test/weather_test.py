@@ -1,8 +1,8 @@
 # this is the "test/weather_test.py" file...
 
-from app.weather import forecast_demo
+from app.weather import display_forecast
 
 
 def test_weather_app():
 
-    assert forecast_demo("06070") == 202
+    assert display_forecast("06070") == true
