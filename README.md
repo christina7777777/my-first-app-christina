@@ -63,3 +63,16 @@ Run the unemployment report:
 
 python -m app.unemployment
 ```
+
+Run mymod
+```sh
+python app/my_mod.py
+```
+
+## Testing
+
+Run tests:
+
+```sh
+pytest
+```
