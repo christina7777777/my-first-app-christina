@@ -12,6 +12,12 @@ pandas
 
 sendgrid==6.5.0
 
+python-dotenv
+
+pgeocode
+
+ipython
+
 #TEST
 
 pytest

@@ -69,6 +69,11 @@ Run mymod
 python app/my_mod.py
 ```
 
+Run weather app
+```sh
+python app/weather.py
+```
+
 ## Testing
 
 Run tests:
