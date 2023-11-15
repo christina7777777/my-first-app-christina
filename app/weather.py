@@ -44,3 +44,11 @@ def display_forecast(zip_code, country_code="US"):
         display(Image(url=period["icon"]))
 
     return True
+
+if __name__ == "__main__":
+
+    # ONLY WANT TO DO IF RUNNING THIS FILE FROM COMMAND LINE
+    # (NOT IF IMPORTING A FUNCTION FROM THIS FILE)
+    zip_code = input("Please input a zip code (e.g. '06510'): ")
+
+    display_forecast(zip_code)
