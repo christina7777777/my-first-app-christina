@@ -1,3 +1,4 @@
+from IPython.display import Image, display
 from pgeocode import Nominatim
 import requests
 import json
