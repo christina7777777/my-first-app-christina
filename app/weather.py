@@ -2,6 +2,7 @@ from pgeocode import Nominatim
 import requests
 import json
 
+DEGREE_SIGN = u"\N{DEGREE SIGN}"
 
 def display_forecast(zip_code, country_code="US"):
     """
@@ -37,8 +38,8 @@ def display_forecast(zip_code, country_code="US"):
         #print(period.keys())
         print("-------------")
         print(period["name"], period["startTime"][0:7])
-        print(period["shortForecast"], f"{period['temperature']} {degree_sign}{period['temperatureUnit']}")
+        print(period["shortForecast"], f"{period['temperature']} {DEGREE_SIGN}{period['temperatureUnit']}")
         #print(period["detailedForecast"])
         display(Image(url=period["icon"]))
 
-    return true
+    return True
