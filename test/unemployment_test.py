@@ -1,4 +1,3 @@
-# this is the "test/unemployment_test.py" file...
 
 from app.unemployment import fetch_data
 
@@ -13,3 +12,4 @@ def test_fetch_data():
 
     assert isinstance(data[0], dict)
     assert list(data[0].keys()) == ["date", "value"]
+    
