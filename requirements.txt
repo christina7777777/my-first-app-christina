@@ -17,3 +17,6 @@ flask # <--- ADD FOR WEB APP
 
 # using this to find and run our tests:
 pytest
+
+# production server needs this to run the web app:
+gunicorn
