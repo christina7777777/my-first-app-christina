@@ -88,6 +88,12 @@ export FLASK_APP=web_app
 flask run
 ```
 
+Run the stocks report:
+
+```sh
+python -m app.stocks
+```
+
 ## Testing
 
 Run tests:
