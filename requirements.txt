@@ -11,6 +11,8 @@ plotly
 
 sendgrid==6.6.0
 
+ipython
+
 flask # <--- ADD FOR WEB APP
 #gunicorn
 
