@@ -24,7 +24,7 @@ def create_app():
     app.register_blueprint(stocks_routes)
     app.register_blueprint(unemployment_routes)
     #app.register_blueprint(book_routes)
-    #app.register_blueprint(weather_routes)
+    app.register_blueprint(weather_routes)
     return app
 
 if __name__ == "__main__":

@@ -1,0 +1,12 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "weather_dashboard" %}
+
+{% block content %}
+
+    <h2>Weather Dashboard ({{ symbol }})</h2>
+
+    <p class="lead">Latest Close: {{ latest_date }}</p>
+
+    <div id="chart-container" height="700px"></div>
+
+{% endblock %}
