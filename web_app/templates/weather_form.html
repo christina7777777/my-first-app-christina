@@ -1,16 +1,16 @@
 
 {% extends "bootstrap_5_layout.html" %}
-{% set active_page = "stocks_form" %}
+{% set active_page = "weather_form" %}
 
 {% block content %}
 
     <h2>Weather Form</h2>
 
-    <p>Request some stock market data...</p>
+    <p>Request some weather data...</p>
 
     <form action="/weather/dashboard" method="POST">
 
-        <label>Weather Symbol:</label>
+        <label>Weather Zipcode:</label>
         <input type="text" name="symbol" placeholder="20057" value="20057">
         <br>
 
