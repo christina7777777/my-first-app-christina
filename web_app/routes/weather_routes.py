@@ -3,7 +3,7 @@
 
 from flask import Blueprint, request, render_template, redirect, flash
 
-from app.weather import display_forecast
+from app.weather_dashboard import display_forecast
 
 weather_routes = Blueprint("weather_routes", __name__)
 
