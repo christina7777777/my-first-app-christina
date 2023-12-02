@@ -28,9 +28,9 @@ def weather_dashboard():
     symbol = request_data.get("symbol") or "20057"
 
     try:
-        df = display_forecast(symbol=symbol)
+        df = display_forecast(zip_code=symbol)
         # latest_close_usd = format_usd(df.iloc[0]["adjusted_close"])
-        latest_date = df.iloc[0]["timestamp"]
+        latest_date = df.iloc[0]["date"]
         data = df.to_dict("records")
 
         return render_template("weather_dashboard.html",
@@ -59,7 +59,7 @@ def weather_api():
     symbol = url_params.get("symbol") or "20057"
 
     try:
-        df = display_forecast(symbol=symbol)
+        df = display_forecast(zip_code=symbol)
         data = df.to_dict("records")
         return {"symbol": symbol, "data": data }
     except Exception as err:
