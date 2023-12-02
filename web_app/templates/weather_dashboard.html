@@ -3,10 +3,16 @@
 
 {% block content %}
 
-    <h2>Weather Dashboard ({{ symbol }})</h2>
+    <h2>Weather For Zip Code ({{ symbol }})</h2>
 
-    <p class="lead">Latest Close: {{ latest_date }}</p>
+    <p class="lead">Date starts: {{ latest_date }}</p>
 
-    <div id="chart-container" height="700px"></div>
+    <div id="chart-container" height="700px">
+        <ul>
+            {% for d in data %}
+                <li>{{ d.date }} | {{ d.temp }} | {{ d.forecast }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 
 {% endblock %}

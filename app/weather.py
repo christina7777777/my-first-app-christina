@@ -1,9 +1,22 @@
-from IPython.display import Image, display
 from pgeocode import Nominatim
+
 import requests
 import json
 
-DEGREE_SIGN = u"\N{DEGREE SIGN}"
+from pandas import DataFrame
+
+# display images in a dataframe in colab
+# ... h/t: https://towardsdatascience.com/rendering-images-inside-a-pandas-dataframe-3631a4883f6
+from IPython.core.display import HTML
+
+degree_sign = u"\N{DEGREE SIGN}"
+
+def to_image(url):
+    return '<img src="'+ url + '" width="32" >'
+
+
+def chopped_date(start_time):
+    return start_time[5:10]
 
 def display_forecast(zip_code, country_code="US"):
     """
@@ -16,7 +29,6 @@ def display_forecast(zip_code, country_code="US"):
         zip_code (str) a valid US zip code, like "20057" or "06510".
 
     """
-
     nomi = Nominatim(country_code)
     geo = nomi.query_postal_code(zip_code)
     latitude = geo["latitude"]
@@ -35,20 +47,40 @@ def display_forecast(zip_code, country_code="US"):
     periods = parsed_forecast_response["properties"]["periods"]
     daytime_periods = [period for period in periods if period["isDaytime"] == True]
 
-    for period in daytime_periods:
-        #print(period.keys())
-        print("-------------")
-        print(period["name"], period["startTime"][0:7])
-        print(period["shortForecast"], f"{period['temperature']} {DEGREE_SIGN}{period['temperatureUnit']}")
-        #print(period["detailedForecast"])
-        display(Image(url=period["icon"]))
+    #for period in daytime_periods:
+    #    #print(period.keys())
+    #    print("-------------")
+    #    print(period["name"], period["startTime"][0:7])
+    #    print(period["shortForecast"], f"{period['temperature']} {degree_sign}{period['temperatureUnit']}")
+    #    #print(period["detailedForecast"])
+    #    display(Image(url=period["icon"]))
 
-    return True
 
-if __name__ == "__main__":
+    df = DataFrame(daytime_periods)
 
-    # ONLY WANT TO DO IF RUNNING THIS FILE FROM COMMAND LINE
-    # (NOT IF IMPORTING A FUNCTION FROM THIS FILE)
-    zip_code = input("Please input a zip code (e.g. '06510'): ")
+    df["date"] = df["startTime"].apply(chopped_date)
 
-    display_forecast(zip_code)
+    # df["img"] = df["icon"].apply(to_image)
+
+    # combined column for temp display
+    # ... h/t: https://stackoverflow.com/questions/19377969/combine-two-columns-of-text-in-pandas-dataframe
+    df["temp"] = df["temperature"].astype(str) + " " + degree_sign + df["temperatureUnit"]
+
+    # rename cols:
+    df.rename(columns={
+        "name":"day",
+        "shortForecast": "forecast"
+    }, inplace=True)
+
+    # drop unused cols:
+    df.drop(columns=[
+        "temperature", "temperatureUnit", "temperatureTrend",
+        "windSpeed", "windDirection",
+        "startTime", "endTime",
+        "number", "isDaytime", "detailedForecast"
+    ], inplace=True)
+
+    # re-order columns:
+    df = df.reindex(columns=['day', 'date', 'temp', 'forecast', 'icon'])
+
+    return df
